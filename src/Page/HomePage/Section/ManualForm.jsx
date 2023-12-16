@@ -1,6 +1,6 @@
 
 const ManualForm = () => {
-    const handleForm =e =>{
+    const handleForm = e => {
         e.preventDefault()
         const form = e.target;
         const name = form.name.value;
@@ -16,8 +16,17 @@ const ManualForm = () => {
         const other = form.other.value;
         const email = form.email.value;
         const phoneNumber = form.phoneNumber.value;
-        const obj = {name,fatherName,motherName,permanentAddress,presentAddress,nationality,religion,userAge,nidNumber,relationShip,other,email,phoneNumber}
+        const obj = { name, fatherName, motherName, permanentAddress, presentAddress, nationality, religion, userAge, nidNumber, relationShip, other, email, phoneNumber }
         console.log(obj);
+        fetch('http://localhost:5000/form', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(obj)
+        })
+        .then(data => console.log('data', data))
+
     }
     return (
         <div>
@@ -50,7 +59,7 @@ const ManualForm = () => {
                         <label className="label">
                             <span className="label-text font-bold text-lg">স্থায়ী ঠিকানা :</span>
                         </label>
-                        <input type="text" name="permanentAddress"  placeholder="গ্রাম,ডাকঘর,উপজেলা,জেলা" className="input input-bordered" required />
+                        <input type="text" name="permanentAddress" placeholder="গ্রাম,ডাকঘর,উপজেলা,জেলা" className="input input-bordered" required />
                     </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-5">
