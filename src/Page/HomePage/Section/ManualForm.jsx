@@ -25,6 +25,7 @@ const ManualForm = () => {
             },
             body: JSON.stringify(obj)
         })
+        .then(res => res.json())
         .then(data => console.log('data', data))
 
     }
